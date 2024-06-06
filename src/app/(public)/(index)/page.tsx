@@ -1,12 +1,16 @@
+/* eslint-disable @next/next/no-img-element */
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { Check } from "lucide-react";
+import RoundImg from "@/components/home/RoundImg";
+import Phone from "@/components/ui/Phone";
+import { Check, Star } from "lucide-react";
 import Image from "next/image";
+import HeroImg from "./HeroImg";
 
 export default function Home() {
   return (
     <div className="bg-slate-50 ">
       <section>
-        <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-32 lg:pb-52">
+        <MaxWidthWrapper className="pb-24 pt-10 lg:grid flex flex-col lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 gap-10 lg:pt-32 lg:pb-52">
           <div className=" col-span-2 px-6 lg:px-0 lg:pt-0">
             <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
               <div className=" absolute w-28 left-0 -top-20 hidden lg:block">
@@ -17,7 +21,7 @@ export default function Home() {
                 <span className="bg-green-600 text-white">Custom</span> Phone
                 Case
               </h1>
-              <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center text-balance md:text-wrap">
+              <p className="mt-8 text-lg lg:pr-10 max-w-prose md:text-start text-center text-balance md:text-wrap">
                 Capture your favorite memories with your own,{" "}
                 <span className="font-semibold">one-of-one</span> phone case.
                 Casee allows you to protect your memories, not just your phone
@@ -40,18 +44,24 @@ export default function Home() {
                 </div>
               </ul>
               <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
-                <div className="flex -space-x-4">
-                  <Image
-                    className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100 object-cover"
-                    src="/images/users/user1.jpg"
-                    alt="Apple Store Badge"
-                    width={400}
-                    height={400}
-                  />
+                <RoundImg />
+                <div className="flex flex-col justify-between items-center sm:items-start">
+                  <div className="flex gap-0.5">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star
+                        key={i}
+                        className="h-4 w-4 text-green-600 fill-green-600"
+                      />
+                    ))}
+                  </div>
+                  <p>
+                    <span className="font-semibold">1.250</span> happy customers
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+          <HeroImg />
         </MaxWidthWrapper>
       </section>
     </div>
