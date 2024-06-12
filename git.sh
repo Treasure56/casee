@@ -1,3 +1,3 @@
 git add .
-git commit -m "Added new testimonial section"
+git commit -m "Added reviews section"
 git push origin main
