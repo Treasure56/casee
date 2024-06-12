@@ -5,6 +5,8 @@ import Phone from "@/components/ui/Phone";
 import { Check, Star } from "lucide-react";
 import Image from "next/image";
 import HeroImg from "./HeroImg";
+import Testimonials from "./Testimonials";
+import Stars from "@/components/ui/Stars";
 
 export default function Home() {
   return (
@@ -46,14 +48,7 @@ export default function Home() {
               <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
                 <RoundImg />
                 <div className="flex flex-col justify-between items-center sm:items-start">
-                  <div className="flex gap-0.5">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 text-green-600 fill-green-600"
-                      />
-                    ))}
-                  </div>
+                 <Stars />
                   <p>
                     <span className="font-semibold">1.250</span> happy customers
                   </p>
@@ -64,6 +59,7 @@ export default function Home() {
           <HeroImg />
         </MaxWidthWrapper>
       </section>
+      <Testimonials />
     </div>
   );
 }
