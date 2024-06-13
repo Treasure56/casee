@@ -8,6 +8,7 @@ import HeroImg from "./HeroImg";
 import Testimonials from "./Testimonials";
 import Stars from "@/components/ui/Stars";
 import Reviews from "@/components/ui/Reviews";
+import PhonePage from "./PhonePage";
 
 export default function Home() {
   return (
@@ -62,6 +63,7 @@ export default function Home() {
       </section>
       <Testimonials />
       <Reviews />
+      <PhonePage />
     </div>
   );
 }

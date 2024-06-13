@@ -1,3 +1,3 @@
 git add .
-git commit -m "Added reviews section"
+git commit -m "completed index page"
 git push origin main
