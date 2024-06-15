@@ -153,10 +153,10 @@ export default function Reviews() {
 }
 
 const PHONES = [
-  "/images/users/user1.jpg",
-  "/images/users/user1.jpg",
-  "/images/users/user1.jpg",
-  "/images/users/user1.jpg",
-  "/images/users/user1.jpg",
-  "/images/users/user1.jpg",
+  "/images/horseimg.jpg",
+  "/images/users/user5.jpg",
+  "/images/users/user3.jpg",
+  "/images/horse2.jpg",
+  "/images/family.jpg",
+  "/images/users/user6.jpg",
 ];

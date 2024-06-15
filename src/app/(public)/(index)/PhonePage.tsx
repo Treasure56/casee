@@ -29,13 +29,13 @@ export default function PhonePage() {
             />
             <div className="relative h-80 md:h-full md:justify-self-end max-w-sm rounded-xl bg-gray-900 ring-inset ring-gray-900/10 lg:rounded-2xl">
               <img
-                src="/images/horse.jpg"
+                src="/images/horse2.jpg"
                 alt=""
                 className="rounded-md object-cover bg-white shadow-2xl ring-1 ring-gray-900/10 h-full w-full"
               />
             </div>
 
-            <Phone className=" w-60 " imgSrc="/images/horse_phone.jpg" />
+            <Phone className=" w-60 " imgSrc="/images/horse2.jpg" />
           </div>
         </div>
 

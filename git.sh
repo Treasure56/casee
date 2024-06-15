@@ -1,3 +1,3 @@
 git add .
-git commit -m "completed index page"
-git push origin main
+git commit -m "started upload page"
+git push origin mainS

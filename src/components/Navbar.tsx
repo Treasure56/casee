@@ -75,7 +75,7 @@ export default async function Navbar() {
 
                 <div className="h-8 w-px bg-zinc-200 hidden sm:block" />
                 <Link
-                  href="/cinfigure/upload"
+                  href="/configure/upload"
                   className={buttonVariants({
                     size: "sm",
                     className: " rounded sm:items-center gap-1",
