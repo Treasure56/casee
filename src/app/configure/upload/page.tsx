@@ -2,14 +2,26 @@
 "use client";
 
 import { Progress } from "@/components/ui/progress";
+import { useUploadThing } from "@/lib/uploadthing";
 import { cn } from "@/lib/utils";
 import { Image, Loader2, MousePointerSquareDashed } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
 
 export default function Page() {
   const [isDragOver, setIsDragOver] = useState<boolean>(false);
   const  [uploadProgress, setUploadProgress] = useState<number>(0);
+  const router = useRouter();
+
+  const {} = useUploadThing("imageUploader", {
+    onClientUploadComplete: ([data]) => {
+      const confiId = data.serverData.configId;
+      startTransition(() => {
+        router.push(`/configure/design?id=${confiId}`);
+      })
+    },
+  })
 
   const onDropRejected = () => {};
   const onDropAccepted = () => {};
