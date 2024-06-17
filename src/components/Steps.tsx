@@ -41,7 +41,9 @@ export default function Steps() {
                                  </span>
 
                                  { /* separator */}
-                                 { i !== 0 ? <div className=" absolute inset-0 hidden w-3 lg:block"></div> : null }
+                                 { i !== 0 ? <div className=" absolute inset-0 hidden w-3 lg:block">
+                                    {/* an svg supposed to be here */}
+                                 </div> : null }
                            
                         </div>
                          </li>)
