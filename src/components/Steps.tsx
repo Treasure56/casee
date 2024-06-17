@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { cn } from "@/lib/utils";
@@ -18,6 +19,29 @@ export default function Steps() {
                                  "bg-primary": isCompleted,
                                  }
                                  )} aria-hidden="true" />
+                                 <span className={cn(i !== 0 ? 'lg:pl-9': '',
+                                    'flex items-center px-6 py-4 trxt-sm font-medium'
+                                 )}>
+                                    <span className=" flex-shrink-0">
+                                        <img src={imgPath} alt="" className={cn(' flex h-20 object-contain items-center justify-center',{
+                                            'border-none': isCompleted,
+                                            'border-zinc-700': isCurrent,
+                                        })} />
+                                    </span>
+
+                                    <span className=" ml-4 h-full mt-0.5 flex min-w-0 flex-col justify-center">
+                                        <span className={cn(" text-sm font-semibold text-zinc-700",{
+                                            'text-primary': isCompleted,
+                                            'text-zinc-700': isCurrent
+                                        })}>
+                                            {step.name}
+                                        </span>
+                                        <span className=" text-sm text-zinc-500"> {step.description}</span>
+                                    </span>
+                                 </span>
+
+                                 { /* separator */}
+                                 { i !== 0 ? <div className=" absolute inset-0 hidden w-3 lg:block"></div> : null }
                            
                         </div>
                          </li>)
