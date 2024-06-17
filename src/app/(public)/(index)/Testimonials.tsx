@@ -31,7 +31,7 @@ const testimonialDummys = [
     description: ` I like how it fits my phone. I can't wait to use it again. I would recommend it to anyone. The image was very clear and the case was very durable. I would recommend it to anyone.`,
   },
   {
-    name: "Jake",
+    name: "moon",
     image: "/images/users/user1.jpg",
     description: ` I like how it fits my phone. I can't wait to use it again. I would recommend it to anyone. The image was very clear and the case was very durable. I would recommend it to anyone.`,
   },
