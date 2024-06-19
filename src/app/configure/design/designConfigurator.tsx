@@ -7,7 +7,8 @@ import HandleComponent from "@/components/HandleComponent";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {RadioGroup} from "@headlessui/react"
 import { useState } from "react";
-import { color } from "framer-motion";
+import { COLORS } from "@/validators/option-validators";
+import { Preahvihear } from "next/font/google";
 
 
 type DesignConfiguratorprops = {
@@ -21,8 +22,10 @@ export default function DesignConfigurator({
   ImageDimensions,
 }: DesignConfiguratorprops) {
 
-  const [options, setOptions] = useState({
-    color: ' black'
+  const [options, setOptions] = useState<{
+    color:(typeof COLORS)[number];
+  }>({
+    color: COLORS[0]
   })
   return (
     <div className=" relative mt-20 grid grid-cols-3 mb-20 pb-20">
@@ -81,7 +84,15 @@ export default function DesignConfigurator({
             <h2 className="tracking-tight font-bold text-3xl ">Customize your case</h2>
             <div className=" w-full h-px bg-zinc-200 my-6" />
             <div className="relative mt-4 h-full flex flex-col justify-between">
-              <RadioGroup value=""></RadioGroup>
+              <RadioGroup
+               value={options.color}
+                onChange={(val) => {
+                  setOptions((prev) =>({
+                ...prev,
+                color: val,
+               }))
+
+              }}></RadioGroup>
 
             </div>
           </div>
