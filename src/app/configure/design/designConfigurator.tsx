@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import {Rnd} from "react-rnd"
 import HandleComponent from "@/components/HandleComponent";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {RadioGroup} from "@headlessui/react"
+import { useState } from "react";
+import { color } from "framer-motion";
 
 
 type DesignConfiguratorprops = {
@@ -17,6 +20,10 @@ export default function DesignConfigurator({
   imageUrl,
   ImageDimensions,
 }: DesignConfiguratorprops) {
+
+  const [options, setOptions] = useState({
+    color: ' black'
+  })
   return (
     <div className=" relative mt-20 grid grid-cols-3 mb-20 pb-20">
       <div className="relative h-[73.5rem] overflow-hidden col-span-2 w-full max-w-4xl  flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 p-12 text-center focus:outline-none focus:ring-2 focus:ring-primary  focus: ring-offdet">
@@ -74,7 +81,8 @@ export default function DesignConfigurator({
             <h2 className="tracking-tight font-bold text-3xl ">Customize your case</h2>
             <div className=" w-full h-px bg-zinc-200 my-6" />
             <div className="relative mt-4 h-full flex flex-col justify-between">
-              
+              <RadioGroup value=""></RadioGroup>
+
             </div>
           </div>
         </ScrollArea>
