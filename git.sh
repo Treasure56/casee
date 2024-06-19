@@ -1,3 +1,3 @@
 git add .
-git commit -m "started design page"
+git commit -m "Added  backround options"
 git push origin main

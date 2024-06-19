@@ -8,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import {RadioGroup} from "@headlessui/react"
 import { useState } from "react";
 import { COLORS } from "@/validators/option-validators";
-import { Preahvihear } from "next/font/google";
+import {Label} from "@/components/ui/label"
 
 
 type DesignConfiguratorprops = {
@@ -46,7 +46,7 @@ export default function DesignConfigurator({
           <div
             className={cn(
               " absolute inset-0  left-[3px] top-px right-[3px] bottom-px rounded-[32px]",
-              `bg-zinc-950`
+              `bg-${options.color.tw}`
             )}
           />
         </div>
@@ -92,7 +92,21 @@ export default function DesignConfigurator({
                 color: val,
                }))
 
-              }}></RadioGroup>
+              }}>
+                <Label>Color: {options.color.label}</Label>
+                <div className="mt-3 flex items-center apace-x-3">
+                  {
+                    COLORS.map((color) =>(
+                      <RadioGroup.Option key={color.label} value={color} className={({active, checked}) =>cn(" relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 active:ring-0 focus:ring-0 active:outline-none focus:outline-none border-2 border-separate", {
+                        [`border-${color.tw}`]: active || checked,
+                      })
+                    }>
+                      <span className={cn(`bg-${color.tw}`, " h-8 w-8 rounded-full boeder-black border-opacity-10 ")}></span>
+                      </RadioGroup.Option>
+                    ))
+                  }
+                </div>
+              </RadioGroup>
 
             </div>
           </div>
