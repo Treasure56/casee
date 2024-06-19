@@ -1,3 +1,3 @@
 git add .
-git commit -m "started upload page"
+git commit -m "started design page"
 git push origin mainS
