@@ -61,7 +61,7 @@ export const MATERIALS = {
       price: PRODUCT_PRICES.material.silicone
     },
     {
-      label: "Sof polycaebonate",
+      label: "Soft polycaebonate",
       value: "polycarbonate",
       description: " Scratch-resistant coating",
       price: PRODUCT_PRICES.material.polycarbonate
