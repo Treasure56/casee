@@ -1,6 +1,6 @@
 'use client';
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import Image from "next/image";
+import NextImage from "next/image";
 import { cn, formatPrice } from "@/lib/utils";
 import {Rnd} from "react-rnd"
 import HandleComponent from "@/components/HandleComponent";
@@ -14,6 +14,10 @@ import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, ChevronsUpDown } from "lucide-react";
 import { BASE_PRICE } from "@/config/product";
+import { promise } from "zod";
+import { resolve } from "path";
+import { useUploadThing } from "@/lib/uploadthing";
+import { useToast } from "@/components/ui/use-toast";
 
 
 type DesignConfiguratorprops = {
@@ -26,6 +30,7 @@ export default function DesignConfigurator({
   imageUrl,
   ImageDimensions,
 }: DesignConfiguratorprops) {
+  const {toast} = useToast()
 
   const [options, setOptions] = useState<{
     color:(typeof COLORS)[number];
@@ -51,24 +56,67 @@ export default function DesignConfigurator({
 
   const phoneCaseRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  /**
-   * Saves the configuration by getting the bounding rectangle of the phone case 
-   * and storing it for later use.
-   *
-   * @return {Promise<void>} A promise that resolves when the configuration is saved.
-   * @throws {Error} If there is an error getting the bounding rectangle of the phone case.
-   */
+
+
+  const { startUpload} = useUploadThing('imageUploader')
+  
   async function saveConfiguration() {
     try {
       const {
         left: caseLeft,
         top: caseTop,
-        width: caseWidth,
-        height: caseHeight
-      } = phoneCaseRef.current!.getBoundingClientRect();
-    } catch (err) {
+        width,
+        height} = phoneCaseRef.current!.getBoundingClientRect()
 
+        const {left: containerLeft, top: containerTop} = containerRef.current!.getBoundingClientRect()
+
+        const leftOffset = caseLeft - containerLeft
+        const topOffset = caseTop - containerTop
+
+        const actualX = renderedPosition.x - leftOffset
+        const actualY = renderedPosition.y - topOffset
+        const  canvas = document.createElement('canvas')
+        canvas.width = width
+        canvas.height = height
+        const ctx = canvas.getContext('2d')
+       
+        const userImage = new Image()
+        userImage.crossOrigin = 'anonymous'
+        userImage.src = imageUrl
+        await new Promise((resolve) => (userImage.onload = resolve));
+
+        ctx?.drawImage(
+          userImage,
+          actualX,
+          actualY,
+          renderedDimension.width,
+          renderedDimension.height
+        )
+
+        const base64 = canvas.toDataURL()        
+        const base64Data = base64.split(',')[1]
+
+        const blob = base64ToBlob(base64Data, "image/png")
+        const file = new File([blob], "filename.png", {type: 'image/png'})
+       await  startUpload([file], {configId})
+    } catch (err) {
+      toast({
+        title: "Something went wrong",
+        description: "there was a problem saving your config, please try again.",
+        variant: "destructive"
+      })
     }
+  }
+
+  function base64ToBlob(base64:string, mimeType:string){
+    const  byteCharacters = atob(base64)
+    const byteNumbers = new Array(byteCharacters.length)
+    for (let i = 0; i < byteCharacters.length; i++){
+      byteNumbers[i] = byteCharacters.charCodeAt(i)
+    }
+
+    const byteArray = new Uint8Array(byteNumbers)
+    return new Blob([byteArray], {type: mimeType})
   }
 
   return (
@@ -79,7 +127,7 @@ export default function DesignConfigurator({
             ratio={896 / 1831}
             className=" pointer-events-none relative  z-50 aspect-[896/1831] w-full"
           >
-            <Image
+            <NextImage
               fill
               alt="phone image"
               src="/images/phone-template.png"
@@ -123,7 +171,7 @@ export default function DesignConfigurator({
         }}
         >
         <div className="relative w-full h-full">
-          <Image
+          <NextImage
             src={imageUrl}
             fill
             alt="your image"
@@ -253,7 +301,7 @@ export default function DesignConfigurator({
               <p className=" font-medium whitespace-nowrap">
               {formatPrice((BASE_PRICE + options.finish.price + options.material.price) / 100)}
               </p>
-              <Button size="sm" className="w-full"> Continue <ArrowRight className="h-4 w-4 ml-1.5 inline" /></Button>
+              <Button size="sm" className="w-full" onClick={() => saveConfiguration()}> Continue <ArrowRight className="h-4 w-4 ml-1.5 inline" /></Button>
             </div>
           </div>
         </div>
