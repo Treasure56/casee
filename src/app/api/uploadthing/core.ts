@@ -2,6 +2,7 @@ import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { z } from "zod";
 import sharp from "sharp";
 import { db } from "@/db";
+import { FINISHES } from "@/validators/option-validators";
  
 const f = createUploadthing();
 
@@ -21,9 +22,16 @@ export const ourFileRouter = {
       const {width, height} = imgMetadata;
 
       if(!configId){
-        const configuration = await db.configuration.create({data: {imageUrl: file.url, height: height || 500, width: width || 500,
+        const configuration = await db.configuration.create({
+          data: {
+            imageUrl: file.url,
+            height: height || 500,
+            width: width || 500,
+            // cropedImageUrl: file.url,
+            finish: "smooth",
 
-        }})
+          },
+        })
 
         return {configId: configuration.id};
       }else{
