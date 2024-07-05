@@ -11,12 +11,12 @@ import { PRODUCT_PRICES } from "@/config/product"
 
 
 export const COLORS = [
-  { label: "Black", value: "charcoal", tw: "zinc-900" },
+  { label: "Black", value: "black", tw: "zinc-900" },
   { label: "Blue", value: "blue", tw: "blue-950" },
-  { label: "Rose", value: "obara obara", tw: "rose-950" },
+  { label: "Rose", value: "rose", tw: "rose-950" },
   { label: "slate", value: "slate", tw: "slate-950" },
   { label: "yellow", value: "yellow", tw: "yellow-950" },
-  { label: "yelloww", value: "yellow owolowo", tw: "yellow-800" },
+  { label: "yelloww", value: "yelloww", tw: "yellow-800" },
 ] as const 
 
 
@@ -25,27 +25,27 @@ export const MODELS ={
   options: [
     {
       label: "Iphone x",
-      value: 'Iphonex'
+      value: 'iphonex'
     },
     {
       label: "Iphone 11",
-      value: 'Iphone11'
+      value: 'iphone11'
     },
     {
       label: "Iphone 12",
-      value: 'Iphone12'
+      value: 'iphone12'
     },
     {
       label: "Iphone 13",
-      value: 'Iphone13'
+      value: 'iphone13'
     },
     {
       label: "Iphone 14",
-      value: 'Iphone14'
+      value: 'iphone14'
     },
     {
       label: "Iphone 15",
-      value: 'Iphone15'
+      value: 'iphone15'
     },
    
   ]
@@ -80,7 +80,7 @@ export const FINISHES = {
     },
     {
       label: "Texture finish",
-      value: "texture",
+      value: "textured",
       description: " soft grippy texture",
       price: PRODUCT_PRICES.finish.textured
     }
