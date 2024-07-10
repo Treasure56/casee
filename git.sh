@@ -1,3 +1,3 @@
 git add .
-git commit -m "Added  backround options"
+git commit -m "started preview page"
 git push origin main 
