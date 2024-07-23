@@ -1,5 +1,6 @@
 import { db } from "@/db";
 import { notFound } from "next/navigation";
+import DesignPreview from "./DesignPreview";
 
 export type PageProps = {
     searchParams: {
@@ -21,6 +22,6 @@ export default async function Page({searchParams}: PageProps) {
         return notFound()}
     
     return (
-        <div></div>
+       <DesignPreview />
     );
 }
