@@ -22,6 +22,6 @@ export default async function Page({searchParams}: PageProps) {
         return notFound()}
     
     return (
-       <DesignPreview />
+       <DesignPreview configuration={configuration} />
     );
 }
