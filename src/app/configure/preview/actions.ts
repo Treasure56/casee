@@ -1,7 +1,9 @@
 "use server";
+import { Order } from "@prisma/client";
 import { BASE_PRICE, PRODUCT_PRICES } from "../../../config/product";
 import { db } from "../../../db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import stripe from "stripe";
 export const createCheckoutSession = async ({
   configId,
 }: {
@@ -29,4 +31,39 @@ export const createCheckoutSession = async ({
   if (finish === "textured") price += PRODUCT_PRICES.finish.textured;
   if (material === "polycarbonate")
     price += PRODUCT_PRICES.material.polycarbonate;
+
+  let order: Order | undefined = undefined;
+
+  const existingOrder = await db.order.findFirst({
+    where: {
+      userId: user.id,
+      configurationId: configuration.id,
+    },
+  });
+  if (existingOrder) {
+    order = existingOrder;
+  } else {
+    order = await db.order.create({
+      data: {
+        amount: price / 100,
+        userId: user.id,
+        configurationId: configuration.id,
+      },
+    });
+  }
+
+  const product = await stripe.products.create({
+    name: "Custom iphone Case",
+    Image: [configuration.imageUrl],
+    default_price_data: {
+      Currency: "usd",
+      unit_amount: price,
+    },
+  });
+
+  const stripeSession = await stripe.checkout.sessions.create({
+    success_url:`${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order?.id}`,
+    cancel_url:`${process.env.NEXT_PUBLIC_SERVER_URL}/configure/preview?id=${configuration.id}`,
+
+  })
 };

@@ -1,3 +1,3 @@
 git add .
-git commit -m "started chechout page"
+git commit -m "setting up stripes"
 git push origin main 
