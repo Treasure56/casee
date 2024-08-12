@@ -71,7 +71,7 @@ model Order {
   userId          String
   amount          Float
   isPaid          Boolean       @default(false)
-  status          OrderStatus @default(awaiting_shipment)
+  status          OrderStatus   @default(awaiting_shipment)
 
   shippingAdress   ShippingAdress? @relation(fields: [shippingAdressId], references: [id])
   shippingAdressId String?
@@ -79,12 +79,13 @@ model Order {
   billingAdressId  String?
 
   createdAt DateTime @default(now())
-  updated DateTime @updatedAt
+  updated   DateTime @updatedAt
 }
 
 model ShippingAdress {
   id          String  @id @default(cuid())
   name        String
+  street      String
   city        String
   postalCode  String
   country     String
@@ -96,12 +97,11 @@ model ShippingAdress {
 model BillingAdress {
   id          String  @id @default(cuid())
   name        String
+  street      String
   city        String
   postalCode  String
   country     String
   state       String?
   phoneNumber String?
-  orders      Order[] 
+  orders      Order[]
 }
-
-
