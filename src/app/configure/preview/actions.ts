@@ -3,7 +3,13 @@ import { Order } from "@prisma/client";
 import { BASE_PRICE, PRODUCT_PRICES } from "@/config/product";
 import { db } from "@/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import stripe from "stripe";
+import Stripe from "stripe";
+
+const stripeKey = process.env.STRIPE_SECRET_KEY ?? ""
+const stripe = new Stripe(stripeKey, {
+  
+})
+
 export const createCheckoutSession = async ({
   configId,
 }: {
@@ -54,7 +60,7 @@ export const createCheckoutSession = async ({
 
   const product = await stripe.products.create({
     name: "Custom iPhone Case",
-    images: [configuration.imageUrl], // Correct the property name to 'images'
+    images: [configuration.imageUrl], 
     default_price_data: {
       currency: "usd",
       unit_amount: price,
