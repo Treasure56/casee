@@ -9,6 +9,9 @@ import { useMutation } from '@tanstack/react-query';
 import { ArrowRight, Check } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Confetti, { ConfettiConfig } from 'react-dom-confetti';
+import { createCheckoutSession } from './actions';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/components/ui/use-toast';
 
 const config = {
     angle: 90,
@@ -24,6 +27,8 @@ const config = {
     colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
   };
 export default function DesignPreview({configuration}: {configuration: configuration}) {
+    const router = useRouter()
+    const {toast} = useToast()
     const [showConfetti, setShowConfetti] = useState(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => setShowConfetti(true));
@@ -36,9 +41,20 @@ export default function DesignPreview({configuration}: {configuration: configura
     if(material === "polycarbonate") totalPrice += PRODUCT_PRICES.material.polycarbonate
     if(finish === "textured") totalPrice += PRODUCT_PRICES.finish.textured
 
-    const {} = useMutation({
+    const {mutate: createPaymentSession} = useMutation({
         mutationKey: [" get-checkout-session"],
-        // mutationFn
+        mutationFn: createCheckoutSession,
+        onSuccess: ({ url }) => {
+            if(url) router.push(url)
+                else throw new Error("unable to retrieve payment url")
+        },
+        onError: () => {
+            toast({
+                title: 'Something went wrong',
+                description: "There was an error on our end. please try again.",
+                variant: 'destructive',
+            })
+        }
     })
     return (
         <>
@@ -122,7 +138,7 @@ export default function DesignPreview({configuration}: {configuration: configura
                     </div>
 
                     <div className="mt-8 flex justify-end pb-12">
-                        <Button isLoading={true} loadingText='loading' className='px-4 sm:px-6 lg:px-8'>Check out <ArrowRight  className=' h-4 w-4 ml-1.5 inline'/></Button>
+                        <Button  onClick={() => createPaymentSession({configId: configuration.id})} loadingText='loading' className='px-4 sm:px-6 lg:px-8'>Check out <ArrowRight  className=' h-4 w-4 ml-1.5 inline'/></Button>
                     </div>
                 </div>
             </div>
