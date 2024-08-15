@@ -12,6 +12,8 @@ import Confetti, { ConfettiConfig } from 'react-dom-confetti';
 import { createCheckoutSession } from './actions';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
+import {useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs"
+import LoginModal from '@/components/LoginModal';
 
 const config = {
     angle: 90,
@@ -29,7 +31,10 @@ const config = {
 export default function DesignPreview({configuration}: {configuration: configuration}) {
     const router = useRouter()
     const {toast} = useToast()
-    const [showConfetti, setShowConfetti] = useState(false);
+    const {id} = configuration
+    const {user} = useKindeBrowserClient()
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
+    const [showConfetti, setShowConfetti] = useState<boolean>(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => setShowConfetti(true));
 
@@ -56,11 +61,25 @@ export default function DesignPreview({configuration}: {configuration: configura
             })
         }
     })
+
+    const handleCheckout = () => {
+        if(user){
+            // create payment session
+            createPaymentSession({configId: id})
+            
+        }else{
+            // they need to be logged in
+            localStorage.setItem("configurationId", id)
+            setIsLoginModalOpen(true)
+        }
+    }
     return (
         <>
         <div aria-hidden="true" className="pointer-event-none select-none absolute inset-0 overflow-hidden flex justify-center">
         <Confetti active={showConfetti} config={config as unknown as ConfettiConfig} />
         </div>
+
+        <LoginModal isOpen={isLoginModalOpen} setIsOpen={setIsLoginModalOpen} />
 
         <div className="mt-20 grid gride-cols-1 text-sm sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12">
             <div className="sm:col-span-4 md:col-span-3 md:row-span-2 md:row-end-2">
@@ -138,7 +157,10 @@ export default function DesignPreview({configuration}: {configuration: configura
                     </div>
 
                     <div className="mt-8 flex justify-end pb-12">
-                        <Button  onClick={() => createPaymentSession({configId: configuration.id})} loadingText='loading' className='px-4 sm:px-6 lg:px-8'>Check out <ArrowRight  className=' h-4 w-4 ml-1.5 inline'/></Button>
+                        <Button  onClick={() => handleCheckout()} 
+                         className='px-4 sm:px-6 lg:px-8'>Check out 
+                         <ArrowRight  className=' h-4 w-4 ml-1.5 inline'/>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -146,6 +168,7 @@ export default function DesignPreview({configuration}: {configuration: configura
         </>
     );
 }
+
 
 
 const highlights = [
