@@ -35,7 +35,7 @@ export default function Page() {
                 <div className="flex flex-col items-center gap-2">
                     <Loader2 className="w-8 h-8 animate-spin text-zinc-500" />
                     <h2 className=" font-semibold text-xl">Logging you in...</h2>
-                    <p>You will be rejected automatically.</p>
+                    <p>You will be redirected automatically.</p>
                 </div>
             </div>
          )
