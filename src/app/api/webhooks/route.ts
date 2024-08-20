@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       process.env.STRIPE_WEBHOOK_SECRET!
     );
 
-    console.log(event.type);
+    console.log(event);
     
     if (event.type === "checkout.session.completed") {
       if (!event.data.object.customer_details?.email) {
