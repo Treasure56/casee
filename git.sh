@@ -1,3 +1,3 @@
 git add .
-git commit -m "setting up stripes"
+git commit -m "Added: phone preview page"
 git push origin main 
