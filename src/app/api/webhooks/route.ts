@@ -19,6 +19,8 @@ export async function POST(req: Request) {
       process.env.STRIPE_WEBHOOK_SECRET!
     );
 
+    console.log(event.type);
+    
     if (event.type === "checkout.session.completed") {
       if (!event.data.object.customer_details?.email) {
         throw new Error("Missing user email");
