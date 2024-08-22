@@ -1,3 +1,3 @@
 git add .
-git commit -m "Added: phone preview page"
+git commit -m "started dashboard page"
 git push origin main 
