@@ -21,7 +21,7 @@ export default function TestimonialCard({
                 <div className="flex flex-col">
                     <p className="font-semibold ">{name}</p>
                     <div className="flex gap-1 5 items-center text-zinc-600">
-                        <Check className="h-4 w-4 stroke-[3px] text-green-600" />
+                        <Check className="h-4 w-4 stroke-[3px] text-primary" />
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@ export default async function Navbar() {
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
           <Link href="/" className="flex z-40 font-semibold">
-            Cas<span className="text-green-600">ee</span>
+            Cas<span className="text-primary">ee</span>
           </Link>
           <div className="h-full flex items-center space-x-4">
             {user ? (

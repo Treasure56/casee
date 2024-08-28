@@ -13,7 +13,7 @@ export default function PhonePage() {
           <div className="mx-auto max-w-2xl sm:text-center">
             <h2 className=" order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:6xl text-gray-900">
               Upload your photo and get{" "}
-              <span className="relative px-2 bg-green-600 text-white">
+              <span className="relative px-2 bg-primary text-white">
                 your own case{" "}
               </span>{" "}
               now
@@ -41,19 +41,19 @@ export default function PhonePage() {
 
         <ul className="mx-auto mt-12 max-w-prose sm:text-lg space-y-2 w-fit">
             <li className="w-fit">
-                <Check  className=" h-5 w-5 text-green-600 inline mr-1.5"/>
+                <Check  className=" h-5 w-5 text-primary inline mr-1.5"/>
                 High-quality, durable material
             </li>
             <li className="w-fit">
-                <Check  className=" h-5 w-5 text-green-600 inline mr-1.5"/>
+                <Check  className=" h-5 w-5 text-primary inline mr-1.5"/>
                 Scratch- and fingerprint resistant coating
             </li>
             <li className="w-fit">
-                <Check  className=" h-5 w-5 text-green-600 inline mr-1.5"/>
+                <Check  className=" h-5 w-5 text-primary inline mr-1.5"/>
                 Wireless charging compatible
             </li>
             <li className="w-fit">
-                <Check  className=" h-5 w-5 text-green-600 inline mr-1.5"/>
+                <Check  className=" h-5 w-5 text-primary inline mr-1.5"/>
                 5years print warranty
             </li>
 

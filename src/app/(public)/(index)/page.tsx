@@ -21,7 +21,7 @@ export default function Home() {
               </div>
               <h1 className="relative w-fit tracking-tighter text-balance font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
                 Your Image on a{" "}
-                <span className="bg-green-600 text-white">Custom</span> Phone
+                <span className="bg-purple-700 text-white">Custom</span> Phone
                 Case
               </h1>
               <p className="mt-8 text-lg lg:pr-10 max-w-prose md:text-start text-center text-balance md:text-wrap">
@@ -33,15 +33,15 @@ export default function Home() {
               <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start">
                 <div className="space-y-2">
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-600" />
+                    <Check className="h-5 w-5 shrink-0 text-primary" />
                     High-quality, durable material
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-600" />5 years
+                    <Check className="h-5 w-5 shrink-0 text-primary" />5 years
                     print guarantee
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-600" />
+                    <Check className="h-5 w-5 shrink-0 text-primary" />
                     Moden iphone models supported
                   </li>
                 </div>

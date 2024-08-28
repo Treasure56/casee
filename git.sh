@@ -1,3 +1,3 @@
 git add .
-git commit -m "started dashboard page"
+git commit -m "Added metadata"
 git push origin main 

@@ -14,7 +14,7 @@ export default function LoginModal({isOpen, setIsOpen}:{
         <DialogContent className="absolute z-[999999]">
         <DialogHeader>
         <div className="relative mx-auto w-24 h-24 mb-2 ">
-        <Bell className="text-green-600" size={80} />
+        <Bell className="text-primary" size={80} />
         </div>
         <DialogTitle className=" text-3xl text-center font-bold tracking-tight text-gray-900">
         Log in to continue

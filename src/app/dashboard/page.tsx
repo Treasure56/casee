@@ -133,7 +133,7 @@ export default async function Page() {
                             <div className="hidden text-sm text-muted-foreground md:inline">{order.user.email}</div>
                         </TableCell>
                         <TableCell className=" hidden sm:table-cell">
-                            <StatusDropDown />
+                            <StatusDropDown  id={order.id} orderStatus={order.status}/>
                         </TableCell>
                         <TableCell>{order.createdAt.toLocaleDateString()}</TableCell>
                         <TableCell className=" text-right">{formatPrice(order.amount)}</TableCell>
