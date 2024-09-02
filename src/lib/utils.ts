@@ -36,5 +36,6 @@ export function constructMetadata({
     //   description,
     //   creator: "Simplicity Treasure"
     // }
+    metadataBase: new URL("https://casee.vercel.app/"),
   }
 }
