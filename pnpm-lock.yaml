@@ -12,7 +12,7 @@ importers:
         specifier: ^2.0.4
         version: 2.0.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@kinde-oss/kinde-auth-nextjs':
-        specifier: ^2.3.6
+        specifier: ^2.1.7
         version: 2.3.6(@babel/core@7.24.7)(next@14.2.3(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@prisma/client':
         specifier: ^5.15.1
