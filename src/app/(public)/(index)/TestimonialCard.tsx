@@ -16,7 +16,7 @@ export default function TestimonialCard({
                     &quot;{description}&quot;
                 </p>
             </div>
-            <div className="flex gap-2 ">
+            <div className="flex gap-2  ">
                 <Image width={100} height={100} src="/images/users/user1.jpg" alt=""  className="rounded-full h-12 w-12 object-cover" />
                 <div className="flex flex-col">
                     <p className="font-semibold ">{name}</p>
