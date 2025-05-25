@@ -15,7 +15,7 @@ export default function Footer() {
                     </div>
                     <div className="flex items-center justify-center">
                         <div className="flex space-x-8">
-                            <Link href="#" className="text-sm text-muted-foreground hover:text-gray-600">Terms</Link>
+                            <Link href="#" className="text-sm text-muted-foreground hover:text-gray-600">Terms </Link>
                             <Link href="#" className="text-sm text-muted-foreground hover:text-gray-600">Privacy policy</Link>
                             <Link href="#" className="text-sm text-muted-foreground hover:text-gray-600">Cookie policy</Link>
                         </div>
