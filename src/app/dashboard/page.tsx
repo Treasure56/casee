@@ -91,7 +91,7 @@ export default async function Page() {
             </Card>
             <Card>
               <CardHeader className="pb-2">
-                <CardDescription>Last Month</CardDescription>
+                <CardDescription> Last Month</CardDescription>
                 <CardTitle className=" text-4xl">
                   {formatPrice(lastWeekSum._sum.amount ?? 0)}
                 </CardTitle>
